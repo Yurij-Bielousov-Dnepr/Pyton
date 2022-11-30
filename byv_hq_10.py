@@ -1,6 +1,5 @@
 metrics=[]
 def bubblesort(sorting_list: list,metrics):
-    # n=p=0
     list_сopy=sorting_list.copy()
     for i in range(len(list_сopy)):
         for j in range(len(list_сopy)-1-i):
@@ -8,7 +7,6 @@ def bubblesort(sorting_list: list,metrics):
             if list_сopy[j] > list_сopy[j+1]:
                 list_сopy[j], list_сopy[j+1] = list_сopy[j+1], list_сopy[j]
                 metrics[1]+= 1
-    # metrics.append([n,p])
     return list_сopy
 def SortInsert(sorting_list, metrics, start = 1):
     n=p=0
@@ -43,8 +41,6 @@ def SortShell(sorting_list, metrics):
     return sorting_list_tmp
 
 def SortMerge(sorting_list, metrics):
-    # p=0
-    # n=0
     sorting_list_tmp=sorting_list.copy()
     if len(sorting_list_tmp) > 1:
         metrics[0]+=1
