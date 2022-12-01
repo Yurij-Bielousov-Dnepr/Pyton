@@ -18,7 +18,7 @@ def SortInsert(sorting_list, metrics, start = 1):
                 sorting_list_tmp[j], sorting_list_tmp[j-1] = sorting_list_tmp[j-1], sorting_list_tmp[j]
             else:
                 break
-        return sorting_list_tmp
+    return sorting_list_tmp
 
 def SortShell(sorting_list, metrics):
     sorting_list_tmp=sorting_list.copy()
@@ -150,10 +150,10 @@ print("Отсортированные данные",SortMerge(list_normal, metri
 print("При сортировке сделано ",metrics[11][0],"проходов и замена сделана",metrics[11][1],"раз")
 
 print("Список отсортирован как лучший ",list_best," среднии ",list_normal, " и худший случай ",list_bad)
-print("Пузырьки лучший случай n=",metrics[0][0],"p=",metrics[0][1],"Bad n=",metrics[1][0],"p=",metrics[1][1],"средний случай n=",metrics[2][0],"p=",metrics[2][1])
-print("Вставками лучший случай n=",metrics[3][0],"p=",metrics[3][1],"Bad n=",metrics[4][0],"p=",metrics[4][1],"средний случайn=",metrics[5][0],"p=",metrics[5][1])
-print("Шелла лучший случай n=",metrics[6][0],"p=",metrics[6][1],"Bad n=",metrics[7][0],"p=",metrics[7][1],"средний случай n=",metrics[8][0],"p=",metrics[8][1])
-print("Обьединением лучший случай n=",metrics[9][0],"p=",metrics[9][1],"Bad n=",metrics[10][0],"p=",metrics[10][1],"средний случай n=",metrics[11][0],"p=",metrics[11][1])
+print("Пузырьки лучший случай n=",metrics[0][0],"p=",metrics[0][1],"худший случай n=",metrics[1][0],"p=",metrics[1][1],"средний случай n=",metrics[2][0],"p=",metrics[2][1])
+print("Вставками лучший случай n=",metrics[3][0],"p=",metrics[3][1],"худший случай n=",metrics[4][0],"p=",metrics[4][1],"средний случай n=",metrics[5][0],"p=",metrics[5][1])
+print("Шелла лучший случай n=",metrics[6][0],"p=",metrics[6][1],"худший случай n=",metrics[7][0],"p=",metrics[7][1],"средний случай n=",metrics[8][0],"p=",metrics[8][1])
+print("Обьединением лучший случай n=",metrics[9][0],"p=",metrics[9][1],"худший случай n=",metrics[10][0],"p=",metrics[10][1],"средний случай n=",metrics[11][0],"p=",metrics[11][1])
 print("Проводим анализ данных:")
 print("Чем меньше значение метрик Проходов и Замен, тем эффективнее метод сортировки.")
 print("Изменение метрик при использовании метода, зависит от отсортированности исходного списка.")
@@ -181,3 +181,4 @@ print("По количеству Замен, худший случай ",sort_p_
 print("По количеству Проходов, средний случай ",sort_n_norm)
 print("По количеству Замен, средний случай ",sort_p_norm)
 print("Эффективность метода зависит от длинны списка и его предварительной сортировки. ")
+print("Метод сортировки Обьединением имеет свою специфику, Замены тут означают слияние частей списка. ")
