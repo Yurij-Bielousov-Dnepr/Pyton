@@ -1,4 +1,3 @@
-metrics=[]
 def bubblesort(sorting_list: list,metrics):
     list_сopy=sorting_list.copy()
     for i in range(len(list_сopy)):
