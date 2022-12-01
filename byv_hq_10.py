@@ -9,35 +9,31 @@ def bubblesort(sorting_list: list,metrics):
                 metrics[1]+= 1
     return list_сopy
 def SortInsert(sorting_list, metrics, start = 1):
-    n=p=0
     sorting_list_tmp=sorting_list.copy()
     for i in range(start,len(sorting_list_tmp)):
         for j in range(i,0,-1):
-            n += 1
+            metrics[0] += 1
             if sorting_list_tmp[j] < sorting_list_tmp[j-1]:
-                p+=1
+                metrics[1]+= 1
                 sorting_list_tmp[j], sorting_list_tmp[j-1] = sorting_list_tmp[j-1], sorting_list_tmp[j]
             else:
                 break
-        metrics.append([n,p])
         return sorting_list_tmp
 
 def SortShell(sorting_list, metrics):
-    n=p=0
     sorting_list_tmp=sorting_list.copy()
     step = len(sorting_list_tmp) // 2
     while step > 0:
         for i in range(0,step):
             for j in range(i+step,len(sorting_list_tmp),step):
                 for k in range(j,0,-step):
-                    n += 1
+                    metrics[0] += 1
                     if sorting_list_tmp[j] < sorting_list_tmp[j-step]:
-                        p+=1
+                        metrics[1]+= 1
                         sorting_list_tmp[j], sorting_list_tmp[j-step] = sorting_list_tmp[j-step], sorting_list_tmp[j]
                     else:
                         break
         step //= 2  
-    metrics.append([n,p])
     return sorting_list_tmp
 
 def SortMerge(sorting_list, metrics):
@@ -154,7 +150,30 @@ print("Отсортированные данные",SortMerge(list_normal, metri
 print("При сортировке сделано ",metrics[11][0],"проходов и замена сделана",metrics[11][1],"раз")
 
 print("Список отсортирован как лучший ",list_best," среднии ",list_normal, " и худший случай ",list_bad)
-print("Пузырьки Best n=",metrics[0][0],"=",metrics[0][1],"Bad n=",metrics[1][0],"p=",metrics[1][1],"Norm n=",metrics[2][0],"p=",metrics[2][1])
-print("Вставками Best n=",metrics[3][0],"=",metrics[3][1],"Bad n=",metrics[4][0],"p=",metrics[4][1],"Norm n=",metrics[5][0],"p=",metrics[5][1])
-print("Шелла Best n=",metrics[6][0],"=",metrics[6][1],"Bad n=",metrics[7][0],"p=",metrics[7][1],"Norm n=",metrics[8][0],"p=",metrics[8][1])
-print("Обьединением Best n=",metrics[9][0],"=",metrics[9][1],"Bad n=",metrics[10][0],"p=",metrics[10][1],"Norm n=",metrics[11][0],"p=",metrics[11][1])
+print("Пузырьки Best n=",metrics[0][0],"p=",metrics[0][1],"Bad n=",metrics[1][0],"p=",metrics[1][1],"Norm n=",metrics[2][0],"p=",metrics[2][1])
+print("Вставками Best n=",metrics[3][0],"p=",metrics[3][1],"Bad n=",metrics[4][0],"p=",metrics[4][1],"Norm n=",metrics[5][0],"p=",metrics[5][1])
+print("Шелла Best n=",metrics[6][0],"p=",metrics[6][1],"Bad n=",metrics[7][0],"p=",metrics[7][1],"Norm n=",metrics[8][0],"p=",metrics[8][1])
+print("Обьединением Best n=",metrics[9][0],"p=",metrics[9][1],"Bad n=",metrics[10][0],"p=",metrics[10][1],"Norm n=",metrics[11][0],"p=",metrics[11][1])
+print("Проводим анализ данных:")
+print("Чем меньше значение метрик n и p, тем эффективнее метод сортировки.")
+print("Изменение метрик при использовании метода, зависит от отсортированности исходного списка.")
+print("Отрортируем метрики и найдем наиболее эффективный метод:")
+dict_sort_n=dict
+dict_sort_p=dict
+# dict_sort_n.update(("Buble Best n=",metrics[0][0]))
+# dict_sort_n.update(("Ins Best n=",metrics[3][0]))
+# dict_sort_n.update(("Shell Best n=",metrics[6][0]))
+# dict_sort_n.update(("Merge Best n=",metrics[9][0]))
+# dict_sort_p.update(("Buble Best n=",metrics[0][1]))
+# dict_sort_p.update(("Ins Best n=",metrics[3][1]))
+# dict_sort_p.update(("Shell Best n=",metrics[6][1]))
+# dict_sort_p.update(("Merge Best n=",metrics[9][1]))
+# dict_sort_n = dict(zip('abcdef', list(range(6))))
+# dict_sort_n = dict(zip('"Buble Best n=","Ins Best n=","Shell Best n=","Merge Best n=","Buble Bad n=","Ins Bad n=","Shell Bad n=","Merge Bad n=","Buble Norm n=","Ins Norm n=","Shell Norm n=","Merge Norm n=",', metrics([] ,[0])))
+dict_sort_n_best = dict(zip(["Buble Best n=","Ins Best n=","Shell Best n=","Merge Best n="], [(metrics[0],[0]), (metrics[3] ,[0]),(metrics[6] ,[0]), (metrics[9] ,[0])]))
+# dict_sort_n_best = dict(zip(["Buble Best n=","Ins Best n=","Shell Best n=","Merge Best n="], [(metrics[0],[0]), (metrics[3] ,[0]),(metrics[6] ,[0]), (metrics[9] ,[0])]))
+# dict_sort_n_best = dict(zip(["Buble Best n=","Ins Best n=","Shell Best n=","Merge Best n="], [(metrics[0],[0]), (metrics[3] ,[0]),(metrics[6] ,[0]), (metrics[9] ,[0])]))
+dict_sort_p_best = dict(zip(["Buble Best p=","Ins Best p=","Shell Best p=","Merge Best p="], [(metrics[0],[1]), (metrics[3] ,[1]),(metrics[6] ,[1]), (metrics[9] ,[1])]))
+
+
+print(dict_sort_n_best, dict_sort_p_best)
